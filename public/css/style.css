@@ -110,7 +110,7 @@ body {
   }
   
   .page-content {
-    padding-top: 90px; /* Increased for mobile to prevent overlap */
+    padding-top: 120px; /* Increased for mobile to prevent overlap with stacked navbar */
   }
 }
 
@@ -210,7 +210,15 @@ body {
 /* Mobile Navigation */
 @media (max-width: 768px) {
   .navbar-inner {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     padding: var(--spacing-sm) var(--spacing-md);
+    gap: var(--spacing-md);
+  }
+  
+  .logo {
+    justify-content: center;
   }
   
   .logo img {
@@ -225,6 +233,7 @@ body {
     gap: var(--spacing-md);
     flex-wrap: wrap;
     justify-content: center;
+    width: 100%;
   }
   
   .nav-links a {
