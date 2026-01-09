@@ -11,8 +11,8 @@
     </p>
 
     <div class="contact-info">
-        <p>Email: <strong>support@msone.com</strong></p>
-        <p>Phone: <strong>+1 000 000 000</strong></p>
+        <p>Email: <strong>mohamedsaidbenyaiche@gmail.com</strong></p>
+        <p>Phone: <strong>+212 627957919</strong></p>
     </div>
 
     <div class="social-links-vertical">
