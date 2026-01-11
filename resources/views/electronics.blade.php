@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="fade-in-up">
-    <h1 class="page-title text-center">Electronics</h1>
+    <h1 class="page-title text-center">Tech Collection</h1>
     <p class="page-subtitle text-center">
         Explore our range of premium electronic products across multiple categories.
     </p>
