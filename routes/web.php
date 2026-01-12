@@ -13,7 +13,7 @@ Route::get('/electronics', function () {
             'category' => 'Phones',
             'items' => [
                 ['name' => 'Samsung Galaxy S25 FE', 'price' => 700, 'image' => 'samsungphone.png'],
-                ['name' => 'iphone 17 pro', 'price' => 1099, 'image' => 'iphonephone.png'],
+                ['name' => 'iPhone 17 pro', 'price' => 1099, 'image' => 'iphonephone.png'],
                 ['name' => 'Samsung Galaxy S25 Ultra', 'price' => 1200, 'image' => 'samsungphone2.png']
             ]
         ],
