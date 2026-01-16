@@ -106,11 +106,10 @@ class ProductSeeder extends Seeder
             ],
         ];
 
-        // Loop through products and update or create
         foreach ($products as $product) {
             Product::updateOrCreate(
-                ['nom' => $product['nom']], // check by product name
-                $product // update all other fields if exists, or create new
+                ['nom' => $product['nom']],
+                $product
             );
         }
     }

@@ -11,7 +11,7 @@
 
     <div class="products-grid">
         @foreach($categories as $cat)
-            <a href="{{ url('/electronics/' . $cat->categorie) }}" class="product-card">
+            <a href="{{ url('/electronics/' . $cat->categorie) }}" class="product-card" style="text-decoration: none; padding-top:20px; font-size:50px;">
                 <div class="product-card-content text-center">
                     <h3 class="product-card-name">
                         {{ $cat->categorie }}
