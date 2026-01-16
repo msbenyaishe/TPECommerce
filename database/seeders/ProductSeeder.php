@@ -35,6 +35,27 @@ class ProductSeeder extends Seeder
                 'image' => 'https://images.samsung.com/is/image/samsung/p6pim/lb/2501/gallery/lb-galaxy-s25-s938-534365-sm-s938bzbpmea-544789381',
                 'solde' => 0,
             ],
+            [
+                'nom' => 'Samsung Galaxy A56 5G',
+                'prix' => 449.99,
+                'categorie' => 'Phones',
+                'image' => 'https://images.samsung.com/is/image/samsung/p6pim/sa_en/sm-a566bzkwmea/gallery/sa-en-galaxy-a56-5g-sm-a566-sm-a566bzkwmea-545488270?$Q90_1248_936_F_PNG$',
+                'solde' => 0,
+            ],
+            [
+                'nom' => 'iPhone 17 Pro max',
+                'prix' => 1399,
+                'categorie' => 'Phones',
+                'image' => 'https://universdigital.com/cdn/shop/files/iphone-17-pro-max-6615174.jpg?v=1761262735&width=1445',
+                'solde' => 0,
+            ],
+            [
+                'nom' => 'Samsung Galaxy S25+',
+                'prix' => 999.99,
+                'categorie' => 'Phones',
+                'image' => 'https://images.samsung.com/is/image/samsung/p6pim/nz/2501/gallery/nz-galaxy-s25-s936-534115-sm-s936bzrcxnz-544793736?$720_576_JPG$',
+                'solde' => 0,
+            ],
 
             // 💻 Laptops
             [

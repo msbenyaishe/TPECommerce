@@ -7,11 +7,11 @@ Route::get('/', function () {
     return view('home');
 });
 
-// Show categories
-Route::get('/electronics', [ProductController::class, 'categories']);
+Route::get('/electronics', [ProductController::class, 'categories'])
+    ->name('electronics.categories');
 
-// Show products by category
-Route::get('/electronics/{category}', [ProductController::class, 'byCategory']);
+Route::get('/electronics/{category}', [ProductController::class, 'byCategory'])
+    ->name('electronics.category');
 
 Route::get('/about', function () {
     return view('about');

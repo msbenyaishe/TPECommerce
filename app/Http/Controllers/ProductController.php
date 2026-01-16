@@ -7,7 +7,7 @@ use App\Models\Product;
 class ProductController extends Controller
 {
     /**
-     * Show all categories
+     * Show all electronics categories
      */
     public function categories()
     {
@@ -21,11 +21,12 @@ class ProductController extends Controller
     }
 
     /**
-     * Show products by category
+     * Show products by category WITH pagination
      */
-    public function byCategory($category)
+    public function byCategory(string $category)
     {
-        $products = Product::where('categorie', $category)->get();
+        $products = Product::where('categorie', $category)
+            ->paginate(3);
 
         return view('electronics-products', [
             'products' => $products,
