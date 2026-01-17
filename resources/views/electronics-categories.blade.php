@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="fade-in-up">
-    <h1 class="page-title text-center">Tech Categories</h1>
+    <h1 class="page-title text-center">Categories</h1>
     <p class="page-subtitle text-center">
         Choose a category to explore our products
     </p>
