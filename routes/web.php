@@ -74,6 +74,11 @@ Route::middleware(['adminuser'])->group(function () {
 */
 
 Route::middleware(['useruser'])->group(function () {
+    
     Route::get('/client', [ProductController::class, 'client'])
         ->name('client.space');
+
+    Route::get('/products/{product}', [ProductController::class, 'show'])
+        ->name('products.show');
+
 });

@@ -10,6 +10,7 @@
             <a href="/">Home</a>
             <a href="/electronics">Electronics</a>
             <a href="/contact">Contact</a>
+            <a href="/about">About</a>
 
             {{-- AUTHENTICATED USERS --}}
             @auth
@@ -22,7 +23,7 @@
                 {{-- LOGOUT --}}
                 <form action="{{ route('logout') }}" method="POST" style="display:inline;">
                     @csrf
-                    <button type="submit" class="nav-link-btn">
+                    <button type="submit" class="msone-nav-logout">
                         Logout
                     </button>
                 </form>

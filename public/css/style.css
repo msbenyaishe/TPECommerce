@@ -1254,3 +1254,55 @@ input::placeholder {
   border-radius: var(--radius-sm);
   box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.1);
 }
+
+
+/* ===============================
+   Premium Navbar Logout Button (Blue)
+================================ */
+.msone-nav-logout {
+  /* Premium Button Appearance - Brand Blue */
+  background: rgba(0, 102, 255, 0.08); /* Soft blue tint based on accent-primary */
+  border: 1px solid rgba(0, 102, 255, 0.2);
+  color: var(--accent-primary); /* Your brand blue */
+  
+  /* Sizing and Spacing */
+  padding: 8px 18px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  
+  /* Typography Matching Navbar */
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: var(--font-size-base); 
+  
+  /* Alignment Fixes */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  line-height: 1;
+  transition: all var(--transition-base);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Hover State: Solid Brand Blue */
+.msone-nav-logout:hover {
+  background: var(--accent-primary);
+  color: #ffffff;
+  border-color: var(--accent-primary);
+}
+
+/* Active Press State */
+.msone-nav-logout:active {
+  transform: translateY(0);
+}
+
+/* Mobile Adjustment (Centered) */
+@media (max-width: 768px) {
+  .msone-nav-logout {
+    width: auto; 
+    margin: 0 auto;
+    font-size: var(--font-size-xs);
+    padding: 6px 14px;
+  }
+}

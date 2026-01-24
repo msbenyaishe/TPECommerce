@@ -153,5 +153,4 @@ class ProductController extends Controller
 
         return view('client-space', compact('products'));
     }
-
 }
