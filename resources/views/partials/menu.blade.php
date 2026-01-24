@@ -10,7 +10,6 @@
             <a href="/">Home</a>
             <a href="/electronics">Electronics</a>
             <a href="/contact">Contact</a>
-            <a href="/about">About</a>
 
             {{-- AUTHENTICATED USERS --}}
             @auth
