@@ -1,47 +1,26 @@
-@extends('layouts.app')
+@extends('layout.master')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+<div class="msone-elegant-wrapper fade-in-up">
+    <h1 class="msone-hero-title page-title text-center">Reset Password</h1>
 
-                    <form method="POST" action="{{ route('password.email') }}">
-                        @csrf
+    @if (session('status'))
+        <p style="color: green;">{{ session('status') }}</p>
+    @endif
 
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Send Password Reset Link') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+    <form method="POST" action="{{ route('password.email') }}" class="msone-minimal-form">
+        @csrf
+        <div class="msone-field">
+            <label for="email" class="msone-label">Email Address</label>
+            <input id="email" type="email" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus class="msone-input">
         </div>
-    </div>
+        
+        @error('email')
+            <p style="color: red;"><strong>{{ $message }}</strong></p>
+        @enderror
+
+        <button type="submit" class="btn-msone-modern hero-btn primary">Send Password Reset Link</button>
+    </form>
 </div>
 @endsection

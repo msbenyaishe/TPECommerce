@@ -15,7 +15,7 @@
 
             <div class="msone-info-box">
                 <span class="msone-price-display">
-                    {{ number_format($product->prix, 0) }} $
+                    $ {{ number_format($product->prix, 0) }}
                 </span>
                 <p class="msone-category-tag">
                     Category: <strong>{{ $product->categorie }}</strong>

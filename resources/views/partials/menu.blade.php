@@ -7,16 +7,22 @@
         </a>
 
         <nav class="nav-links">
-            <a href="/">Home</a>
-            <a href="/electronics">Electronics</a>
-            <a href="/contact">Contact</a>
+            
 
             {{-- AUTHENTICATED USERS --}}
             @auth
 
                 {{-- ADMIN ONLY --}}
                 @if(auth()->user()->role === 'admin')
-                    <a href="{{ route('products.create') }}">Add Product</a>
+                <a href="/">Home</a>
+                <a href="/electronics">Electronics</a>
+                <a href="{{ route('products.create') }}">Add Product</a>
+                @endif
+                
+                @if(auth()->user()->role === 'user')
+                <a href="/">Home</a>
+                <a href="/electronics">Electronics</a>
+                <a href="/contact">Contact</a>
                 @endif
 
                 {{-- LOGOUT --}}
@@ -29,6 +35,9 @@
 
             {{-- GUEST USERS --}}
             @else
+                <a href="/">Home</a>
+                <a href="/electronics">Electronics</a>
+                <a href="/contact">Contact</a>
                 <a href="{{ route('login') }}">Login</a>
                 <a href="{{ route('register') }}">Register</a>
             @endauth

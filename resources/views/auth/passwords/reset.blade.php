@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layout.master')
 
 @section('content')
-<div class="container">
+<div class="msone-elegant-wrapper fade-in-up">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">

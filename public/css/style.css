@@ -1230,22 +1230,8 @@ input::placeholder {
   transform: translateY(-1px);
 }
 
-/* Elegant Animated Underline */
-.msone-link-secondary::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  transform: scaleX(0);
-  height: 1.5px;
-  bottom: -2px;
-  left: 0;
-  background-color: var(--accent-primary-hover);
-  transform-origin: bottom right;
-  transition: transform var(--transition-base);
-}
-
 .msone-link-secondary:hover::after {
-  transform: scaleX(1);
+  transform: scaleX(2);
   transform-origin: bottom left;
 }
 
@@ -1253,6 +1239,7 @@ input::placeholder {
   outline: none;
   border-radius: var(--radius-sm);
   box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.1);
+  padding: 10px;
 }
 
 

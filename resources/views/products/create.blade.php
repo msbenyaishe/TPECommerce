@@ -19,7 +19,7 @@
     <form 
         action="{{ route('products.store') }}" 
         method="POST" 
-        enctype="multipart/form-data" 
+        enctype="multipart/form-data"
         class="msone-minimal-form"
     >
         @csrf
