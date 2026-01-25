@@ -28,6 +28,15 @@ Route::get('/electronics/{category}', [ProductController::class, 'byCategory'])
 
 /*
 |--------------------------------------------------------------------------
+| Product details (PUBLIC: guest + user + admin)
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/products/{product}', [ProductController::class, 'show'])
+    ->name('products.show');
+
+/*
+|--------------------------------------------------------------------------
 | Authentication
 |--------------------------------------------------------------------------
 */
@@ -51,9 +60,6 @@ Route::middleware(['adminuser'])->group(function () {
     Route::post('/products', [ProductController::class, 'store'])
         ->name('products.store');
 
-    Route::get('/products/{product}', [ProductController::class, 'show'])
-        ->name('products.show');
-
     Route::get('/products/{product}/edit', [ProductController::class, 'edit'])
         ->name('products.edit');
 
@@ -74,11 +80,7 @@ Route::middleware(['adminuser'])->group(function () {
 */
 
 Route::middleware(['useruser'])->group(function () {
-    
+
     Route::get('/client', [ProductController::class, 'client'])
         ->name('client.space');
-
-    Route::get('/products/{product}', [ProductController::class, 'show'])
-        ->name('products.show');
-
 });

@@ -4,57 +4,71 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Http\Requests\AddProductRequest;
-use Illuminate\Http\Request;
 use Cloudinary\Cloudinary;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
-    /**
-     * Show all electronics categories
-     */
+    /*
+    |--------------------------------------------------------------------------
+    | Categories (PUBLIC)
+    |--------------------------------------------------------------------------
+    */
     public function categories()
     {
         $categories = Product::select('categorie')
             ->distinct()
             ->get();
 
-        return view('electronics-categories', [
-            'categories' => $categories
-        ]);
+        return view('electronics-categories', compact('categories'));
     }
 
-    /**
-     * Show products by category (WITH pagination)
-     */
+    /*
+    |--------------------------------------------------------------------------
+    | Products by category (PUBLIC)
+    |--------------------------------------------------------------------------
+    */
     public function byCategory(string $category)
     {
         $products = Product::where('categorie', $category)
-            ->paginate(3);
+            ->paginate(6);
 
-        return view('electronics-products', [
-            'products' => $products,
-            'category' => $category
-        ]);
+        return view('electronics-products', compact('products', 'category'));
     }
 
-    /**
-     * Show the form to create a new product (Atelier 8)
-     */
+    /*
+    |--------------------------------------------------------------------------
+    | Product details (PUBLIC — role-aware)
+    |--------------------------------------------------------------------------
+    */
+    public function show(Product $product)
+    {
+        // One page for everyone
+        return view('products.show', compact('product'));
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Admin: create
+    |--------------------------------------------------------------------------
+    */
     public function create()
     {
         return view('products.create');
     }
 
-    /**
-     * Store a new product in database (Atelier 8 + Cloudinary)
-     */
+    /*
+    |--------------------------------------------------------------------------
+    | Admin: store (Cloudinary)
+    |--------------------------------------------------------------------------
+    */
     public function store(AddProductRequest $request)
     {
         $cloudinary = new Cloudinary([
             'cloud' => [
-                'cloud_name' => env('CLOUDINARY_CLOUD_NAME'),
-                'api_key'    => env('CLOUDINARY_API_KEY'),
-                'api_secret' => env('CLOUDINARY_API_SECRET'),
+                'cloud_name' => config('services.cloudinary.cloud_name'),
+                'api_key'    => config('services.cloudinary.api_key'),
+                'api_secret' => config('services.cloudinary.api_secret'),
             ],
         ]);
 
@@ -76,81 +90,25 @@ class ProductController extends Controller
             ->with('success', 'Produit ajouté avec succès');
     }
 
-    /**
-     * Show a single product (Atelier 9)
-     */
-    public function show(Product $product)
-    {
-        return view('products.show', [
-            'product' => $product
-        ]);
-    }
-
-    /**
-     * Show edit form (Atelier 9)
-     */
+    /*
+    |--------------------------------------------------------------------------
+    | Admin: edit / update / delete
+    |--------------------------------------------------------------------------
+    */
     public function edit(Product $product)
     {
-        return view('products.edit', [
-            'product' => $product
-        ]);
+        return view('products.edit', compact('product'));
     }
 
-    /**
-     * Update product (Atelier 9 + Cloudinary optional update)
-     */
-    public function update(Request $request, Product $product)
+    public function update(AddProductRequest $request, Product $product)
     {
-        $request->validate([
-            'nom'       => 'required|string|max:255',
-            'prix'      => 'required|numeric',
-            'categorie' => 'required|string|max:255',
-            'image'     => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
-            'solde'     => 'nullable|boolean',
-        ]);
-
-        if ($request->hasFile('image')) {
-
-            $cloudinary = new Cloudinary([
-                'cloud' => [
-                    'cloud_name' => env('CLOUDINARY_CLOUD_NAME'),
-                    'api_key'    => env('CLOUDINARY_API_KEY'),
-                    'api_secret' => env('CLOUDINARY_API_SECRET'),
-                ],
-            ]);
-
-            $uploadResult = $cloudinary->uploadApi()->upload(
-                $request->file('image')->getRealPath(),
-                ['folder' => 'products']
-            );
-
-            $product->image = $uploadResult['secure_url'];
-        }
-
-        $product->nom       = $request->nom;
-        $product->prix      = $request->prix;
-        $product->categorie = $request->categorie;
-        $product->solde     = $request->solde ?? false;
-
-        $product->save();
-
-        return back()->with('success', 'Produit modifié avec succès');
+        $product->update($request->validated());
+        return redirect()->route('products.show', $product);
     }
 
-    /**
-     * Delete product (Atelier 9)
-     */
     public function destroy(Product $product)
     {
         $product->delete();
-
-        return back()->with('success', 'Produit supprimé avec succès');
-    }
-
-    public function client()
-    {
-        $products = Product::where('solde', true)->get();
-
-        return view('client-space', compact('products'));
+        return redirect()->route('electronics.categories');
     }
 }
