@@ -7,7 +7,7 @@
     <div class="msone-grid-card">
 
         <div class="msone-image-only-side">
-            <img src="{{ $product->image }}" class="msone-main-img" alt="{{ $product->nom }}">
+            <img src="{{ $product->image }}" class="msone-main-img" alt="{{ $product->nom }}" style="border-radius: 20px;">
         </div>
 
         <div class="msone-content-side">
