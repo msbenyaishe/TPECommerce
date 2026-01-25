@@ -3,23 +3,22 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
-| Public pages
+| 1. Public Pages
 |--------------------------------------------------------------------------
 */
-
-Route::get('/', fn () => view('home'));
+Route::get('/', fn () => view('home'))->name('welcome'); // Often used as default home
 Route::get('/about', fn () => view('about'));
 Route::get('/contact', fn () => view('contact'));
 
 /*
 |--------------------------------------------------------------------------
-| Electronics (PUBLIC)
+| 2. Electronics (PUBLIC)
 |--------------------------------------------------------------------------
 */
-
 Route::get('/electronics', [ProductController::class, 'categories'])
     ->name('electronics.categories');
 
@@ -28,30 +27,21 @@ Route::get('/electronics/{category}', [ProductController::class, 'byCategory'])
 
 /*
 |--------------------------------------------------------------------------
-| Product details (PUBLIC: guest + user + admin)
+| 3. Authentication & Base Home
 |--------------------------------------------------------------------------
 */
-
-Route::get('/products/{product}', [ProductController::class, 'show'])
-    ->name('products.show');
-
-/*
-|--------------------------------------------------------------------------
-| Authentication
-|--------------------------------------------------------------------------
-*/
-
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])
-    ->name('home');
+// This is the default redirect for many Laravel starters
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 /*
 |--------------------------------------------------------------------------
-| ADMIN ROUTES
+| 4. ADMIN ROUTES
+|--------------------------------------------------------------------------
+| FIXED: Moved above {product} wildcard to ensure 'create' is accessible.
 |--------------------------------------------------------------------------
 */
-
 Route::middleware(['adminuser'])->group(function () {
 
     Route::get('/products/create', [ProductController::class, 'create'])
@@ -75,12 +65,21 @@ Route::middleware(['adminuser'])->group(function () {
 
 /*
 |--------------------------------------------------------------------------
-| USER ROUTES
+| 5. USER ROUTES
 |--------------------------------------------------------------------------
 */
-
 Route::middleware(['useruser'])->group(function () {
-
     Route::get('/client', [ProductController::class, 'client'])
         ->name('client.space');
 });
+
+/*
+|--------------------------------------------------------------------------
+| 6. Product Details (Wildcard)
+|--------------------------------------------------------------------------
+| FIXED: Placed at the bottom so it doesn't intercept '/products/create'.
+|--------------------------------------------------------------------------
+*/
+Route::get('/products/{product}', [ProductController::class, 'show'])
+    ->middleware('auth')
+    ->name('products.show');
