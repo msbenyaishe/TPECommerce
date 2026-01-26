@@ -7,8 +7,6 @@
         </a>
 
         <nav class="nav-links">
-            
-
             {{-- AUTHENTICATED USERS --}}
             @auth
 
@@ -16,7 +14,7 @@
                 @if(auth()->user()->role === 'admin')
                 <a href="/">Home</a>
                 <a href="/electronics">Electronics</a>
-                <a href="{{ route('products.create') }}">Add Product</a>
+                <a href="{{ route('products.create') }}">Add</a>
                 @endif
                 
                 @if(auth()->user()->role === 'user')
