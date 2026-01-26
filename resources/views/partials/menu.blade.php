@@ -37,7 +37,6 @@
             @else
                 <a href="/">Home</a>
                 <a href="/electronics">Electronics</a>
-                <a href="/contact">Contact</a>
                 <a href="{{ route('login') }}">Login</a>
                 <a href="{{ route('register') }}">Register</a>
             @endauth
