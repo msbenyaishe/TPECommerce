@@ -6,6 +6,8 @@ use App\Models\Product;
 use App\Http\Requests\AddProductRequest;
 use Illuminate\Http\Request;
 use Cloudinary\Cloudinary;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\TestMail;
 
 class ProductController extends Controller
 {
@@ -153,4 +155,30 @@ class ProductController extends Controller
 
         return view('client-space', compact('products'));
     }
+
+    public function email()
+    {
+        return view('email');
+    }
+
+    public function sendEmail(Request $request)
+    {
+        $request->validate([
+            'recipient_email' => 'required|email',
+            'subject' => 'required|string|max:255',
+            'message' => 'required|string',
+        ]);
+
+        $data = [
+            'recipient_email' => $request->recipient_email,
+            'subject' => $request->subject,
+            'message' => $request->message,
+        ];
+
+        Mail::to($data['recipient_email'])->send(new TestMail($data));
+
+        return back()->with('success', 'Email sent successfully!');
+    }
+
+
 }

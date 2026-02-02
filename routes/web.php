@@ -61,6 +61,10 @@ Route::middleware(['adminuser'])->group(function () {
 
     Route::get('/admin', fn () => view('admin.dashboard'))
         ->name('admin.dashboard');
+
+    Route::get('/email', [ProductController::class, 'email']);
+    Route::post('/send/email', [ProductController::class, 'sendEmail'])
+        ->name('send.email');
 });
 
 /*
@@ -83,3 +87,7 @@ Route::middleware(['useruser'])->group(function () {
 Route::get('/products/{product}', [ProductController::class, 'show'])
     ->middleware('auth')
     ->name('products.show');
+
+
+
+
