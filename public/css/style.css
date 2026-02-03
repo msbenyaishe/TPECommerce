@@ -225,7 +225,7 @@ body {
   width: 100%;
 }
 
-/* Mobile Navigation - Balanced Centered Scroll */
+/* Mobile Navigation - True Centered Scroll */
 @media (max-width: 768px) {
   .navbar-inner {
     flex-direction: column;
@@ -236,27 +236,23 @@ body {
 
   .nav-links {
     display: flex;
-    flex-wrap: nowrap;          /* Keep everything in one line */
-    overflow-x: auto;           /* Enable horizontal swipe */
+    flex-wrap: nowrap;
+    overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     
     width: 100%;
-    /* Key Change: This centers links but allows overflow */
-    justify-content: flex-start; 
-    padding: 0 var(--spacing-xl); /* Adds "breathing room" on both edges */
+    /* KEY FIX: Centers content if small, allows scroll if large */
+    justify-content: safe center; 
+    
+    /* Standard padding for the "edges" when scrolling */
+    padding: 0 var(--spacing-md) var(--spacing-xs);
     gap: var(--spacing-lg);
     
-    /* Center the contents if they don't overflow the screen */
-    scroll-padding: var(--spacing-xl);
+    /* Hide scrollbars */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
   }
 
-  /* Force the content to respect the padding for centering */
-  .nav-links::after {
-    content: '';
-    flex: 0 0 var(--spacing-xl); /* Invisible spacer to balance the right side */
-  }
-
-  /* Hide scrollbar for a clean app-like feel */
   .nav-links::-webkit-scrollbar {
     display: none;
   }
@@ -264,8 +260,8 @@ body {
   .nav-links a, 
   .msone-nav-logout {
     font-size: var(--font-size-sm);
-    white-space: nowrap;        /* Prevent text from breaking */
-    flex-shrink: 0;             /* Stop links from squishing */
+    white-space: nowrap;
+    flex-shrink: 0; /* Prevents text squishing */
   }
 }
 
