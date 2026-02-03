@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="msone-elegant-wrapper fade-in-up">
-    <h1 class="msone-hero-title page-title text-center">Add New Product</h1>
+    <h1 class="msone-hero-title page-title text-center">New Product</h1>
 
     @if ($errors->any())
         <div class="msone-minimal-error" role="alert">
