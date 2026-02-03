@@ -245,8 +245,8 @@ body {
     justify-content: safe center; 
     
     /* Standard padding for the "edges" when scrolling */
-    padding: 0 var(--spacing-md) var(--spacing-xs);
-    gap: var(--spacing-lg);
+    padding: 0 var(--spacing-xl) var(--spacing-xs);
+    gap: 25px;
     
     /* Hide scrollbars */
     scrollbar-width: none;
