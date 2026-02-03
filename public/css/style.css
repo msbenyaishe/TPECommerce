@@ -225,12 +225,12 @@ body {
   width: 100%;
 }
 
-/* Mobile Navigation - Horizontal Scroll */
+/* Mobile Navigation - Centered Horizontal Scroll */
 @media (max-width: 768px) {
   .navbar-inner {
     flex-direction: column;
     align-items: center;
-    padding: var(--spacing-sm) 0; /* Remove side padding to let scroll hit edges */
+    padding: var(--spacing-sm) 0;
     gap: var(--spacing-md);
   }
 
@@ -240,41 +240,46 @@ body {
     margin-bottom: 2px;
   }
 
-  .logo img {
-    height: 40px;
-  }
-
-  /* Scrollable Links Container */
+  /* Centered Scrollable Links Container */
   .nav-links {
     display: flex;
-    flex-wrap: nowrap;       /* Prevent links from jumping to next line */
-    overflow-x: auto;        /* Enable horizontal swipe */
-    -webkit-overflow-scrolling: touch; /* Smooth scrolling for iOS */
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    
+    /* The Trick to Centering with Scroll */
     width: 100%;
-    justify-content: flex-start; /* Start from left for scrolling */
-    padding: 0 var(--spacing-md) var(--spacing-xs); /* Padding on sides for links */
-    gap: var(--spacing-lg);  /* Generous gap for easy clicking */
+    justify-content: center; /* Center links by default */
+    padding: 0 var(--spacing-md) var(--spacing-xs);
+    gap: var(--spacing-lg);
+    
+    /* Ensure content doesn't get cut off when it exceeds width */
+    scrollbar-width: none; 
+    -ms-overflow-style: none;
   }
 
-  /* Hide scrollbar for a cleaner look (optional) */
+  /* Safety: If content is wider than screen, align to start so it scrolls correctly */
+  .nav-links::after,
+  .nav-links::before {
+    content: '';
+    flex: 1 0 0; /* Creates invisible spacers to help center */
+    display: none; /* Hide unless needed for specific layouts */
+  }
+
   .nav-links::-webkit-scrollbar {
     display: none;
-  }
-  .nav-links {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;     /* Firefox */
   }
 
   .nav-links a, 
   .msone-nav-logout {
     font-size: var(--font-size-sm);
-    white-space: nowrap;     /* Keep text on one line */
-    flex-shrink: 0;          /* Prevent links from squishing */
+    white-space: nowrap;
+    flex-shrink: 0; /* Prevents text from squishing */
   }
 
-  /* Ensure the Logout button stays blue and elegant */
+  /* Keep your elegant Logout button centered in the row */
   .msone-nav-logout {
-    padding: 6px 14px;
+    padding: 8px 16px;
     font-size: var(--font-size-xs);
   }
 }
