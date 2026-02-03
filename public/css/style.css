@@ -225,7 +225,7 @@ body {
   width: 100%;
 }
 
-/* Mobile Navigation - Centered Horizontal Scroll */
+/* Mobile Navigation - Balanced Centered Scroll */
 @media (max-width: 768px) {
   .navbar-inner {
     flex-direction: column;
@@ -234,38 +234,29 @@ body {
     gap: var(--spacing-md);
   }
 
-  .logo {
-    justify-content: center;
-    width: 100%;
-    margin-bottom: 2px;
-  }
-
-  /* Centered Scrollable Links Container */
   .nav-links {
     display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
+    flex-wrap: nowrap;          /* Keep everything in one line */
+    overflow-x: auto;           /* Enable horizontal swipe */
     -webkit-overflow-scrolling: touch;
     
-    /* The Trick to Centering with Scroll */
     width: 100%;
-    justify-content: center; /* Center links by default */
-    padding: 0 var(--spacing-md) var(--spacing-xs);
+    /* Key Change: This centers links but allows overflow */
+    justify-content: flex-start; 
+    padding: 0 var(--spacing-xl); /* Adds "breathing room" on both edges */
     gap: var(--spacing-lg);
     
-    /* Ensure content doesn't get cut off when it exceeds width */
-    scrollbar-width: none; 
-    -ms-overflow-style: none;
+    /* Center the contents if they don't overflow the screen */
+    scroll-padding: var(--spacing-xl);
   }
 
-  /* Safety: If content is wider than screen, align to start so it scrolls correctly */
-  .nav-links::after,
-  .nav-links::before {
+  /* Force the content to respect the padding for centering */
+  .nav-links::after {
     content: '';
-    flex: 1 0 0; /* Creates invisible spacers to help center */
-    display: none; /* Hide unless needed for specific layouts */
+    flex: 0 0 var(--spacing-xl); /* Invisible spacer to balance the right side */
   }
 
+  /* Hide scrollbar for a clean app-like feel */
   .nav-links::-webkit-scrollbar {
     display: none;
   }
@@ -273,14 +264,8 @@ body {
   .nav-links a, 
   .msone-nav-logout {
     font-size: var(--font-size-sm);
-    white-space: nowrap;
-    flex-shrink: 0; /* Prevents text from squishing */
-  }
-
-  /* Keep your elegant Logout button centered in the row */
-  .msone-nav-logout {
-    padding: 8px 16px;
-    font-size: var(--font-size-xs);
+    white-space: nowrap;        /* Prevent text from breaking */
+    flex-shrink: 0;             /* Stop links from squishing */
   }
 }
 
