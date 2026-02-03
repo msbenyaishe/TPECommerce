@@ -5,14 +5,6 @@
 <div class="msone-elegant-wrapper fade-in-up">
     <h2 class="msone-hero-title page-title text-center">Email Customers</h2>
 
-    <div>
-        @if(session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
-    </div>
-
     <form action="{{ route('send.email') }}" method="post" class="msone-minimal-form">
         @csrf
 
