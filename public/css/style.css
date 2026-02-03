@@ -106,7 +106,7 @@ body {
 
 @media (max-width: 768px) {
   .container {
-    padding: var(--spacing-lg) var(--spacing-md);
+    padding: var(--spacing-xl) var(--spacing-md);
   }
   
   .page-content {
