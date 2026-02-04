@@ -31,7 +31,7 @@ class ProductController extends Controller
     public function byCategory(string $category)
     {
         $products = Product::where('categorie', $category)
-            ->paginate(3);
+            ->paginate(6);
 
         return view('electronics-products', [
             'products' => $products,
