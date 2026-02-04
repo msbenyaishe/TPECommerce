@@ -259,7 +259,7 @@ body {
 
   .nav-links a, 
   .msone-nav-logout {
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-md);
     white-space: nowrap;
     flex-shrink: 0; /* Prevents text squishing */
   }
