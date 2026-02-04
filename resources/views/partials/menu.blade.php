@@ -16,28 +16,33 @@
                 <a href="/electronics">Electronics</a>
                 <a href="{{ route('products.create') }}">Add</a>
                 <a href="/email">Share</a>
-                @endif
-                
-                @if(auth()->user()->role === 'user')
-                <a href="/">Home</a>
-                <a href="/electronics">Electronics</a>
-                <a href="/contact">Contact</a>
-                @endif
-
-                {{-- LOGOUT --}}
                 <form action="{{ route('logout') }}" method="POST" style="display:inline;">
                     @csrf
                     <button type="submit" class="msone-nav-logout">
                         Logout
                     </button>
                 </form>
-
+                @endif
+                
+                @if(auth()->user()->role === 'user')
+                <a href="/">Home</a>
+                <a href="/electronics">Electronics</a>
+                <a href="/contact">Contact</a>
+                <form action="{{ route('logout') }}" method="POST" style="display:inline;">
+                    @csrf
+                    <button type="submit" class="msone-nav-logout">
+                        Logout
+                    </button>
+                </form>
+                @endif
+                
             {{-- GUEST USERS --}}
             @else
                 <a href="/">Home</a>
                 <a href="/electronics">Electronics</a>
                 <a href="{{ route('login') }}">Login</a>
                 <a href="{{ route('register') }}">Register</a>
+                <a href="/about">About</a>
             @endauth
         </nav>
 
