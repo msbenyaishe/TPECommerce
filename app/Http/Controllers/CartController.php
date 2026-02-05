@@ -31,7 +31,7 @@ class CartController extends Controller
 
         session()->put('cart', $cart);
 
-        return redirect()->back()->with('success', 'Produit ajouté au panier');
+        return redirect()->back()->with('success', 'Product added to cart.');
     }
 
     public function update(Request $request)

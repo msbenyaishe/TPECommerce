@@ -81,7 +81,6 @@ Route::middleware(['useruser'])->group(function () {
     Route::get('/cart', [CartController::class, 'index'])
         ->name('cart.index');
 
-    // ✅ FIXED HERE (GET → POST)
     Route::post('/add-to-cart/{id}', [CartController::class, 'add'])
         ->name('cart.add');
 

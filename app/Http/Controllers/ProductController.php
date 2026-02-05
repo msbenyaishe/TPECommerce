@@ -75,7 +75,7 @@ class ProductController extends Controller
 
         return redirect()
             ->route('electronics.categories')
-            ->with('success', 'Produit ajouté avec succès');
+            ->with('success', 'Product added successfully.');
     }
 
     /**
@@ -136,7 +136,7 @@ class ProductController extends Controller
 
         $product->save();
 
-        return back()->with('success', 'Produit modifié avec succès');
+        return back()->with('success', 'Product updated successfully.');
     }
 
     /**
@@ -146,7 +146,7 @@ class ProductController extends Controller
     {
         $product->delete();
 
-        return back()->with('success', 'Produit supprimé avec succès');
+        return back()->with('success', 'Product deleted successfully.');
     }
 
     public function client()
