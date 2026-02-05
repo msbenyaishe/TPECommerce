@@ -1,3 +1,13 @@
+@php
+    $cartCount = 0;
+
+    if (session()->has('cart')) {
+        foreach (session('cart') as $item) {
+            $cartCount += $item['quantity'];
+        }
+    }
+@endphp
+
 <header class="navbar">
     <div class="navbar-inner">
 
@@ -28,6 +38,16 @@
                 <a href="/">Home</a>
                 <a href="/electronics">Electronics</a>
                 <a href="/contact">Contact</a>
+                <a href="/cart" class="msone-cart-link">
+                    <img src="{{ asset('imgs/cart-shopping-solid-full.svg') }}" width="30">
+
+                    @if($cartCount > 0)
+                        <span class="cart-badge-circle">
+                            {{ $cartCount }}
+                        </span>
+                    @endif
+                </a>
+
                 <form action="{{ route('logout') }}" method="POST" style="display:inline;">
                     @csrf
                     <button type="submit" class="msone-nav-logout">

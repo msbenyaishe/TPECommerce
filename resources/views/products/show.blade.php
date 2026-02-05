@@ -7,7 +7,8 @@
     <div class="msone-grid-card">
 
         <div class="msone-image-only-side">
-            <img src="{{ $product->image }}" class="msone-main-img" alt="{{ $product->nom }}" style="border-radius: 20px;">
+            <img src="{{ $product->image }}" class="msone-main-img"
+                 alt="{{ $product->nom }}" style="border-radius: 20px;">
         </div>
 
         <div class="msone-content-side">
@@ -22,11 +23,24 @@
                 </p>
             </div>
 
-            {{-- ADMIN ACTIONS ONLY --}}
+            {{-- USER ACTION --}}
+            @auth
+                @if(auth()->user()->role === 'user')
+                    <form action="{{ route('cart.add', $product->id) }}" method="POST" style="margin-top: 20px;">
+                        @csrf
+                        <button type="submit" class="btn-msone-modern hero-btn primary">
+                            Add to Cart
+                        </button>
+                    </form>
+                @endif
+            @endauth
+
+            {{-- ADMIN ACTIONS --}}
             @auth
                 @if(auth()->user()->role === 'admin')
                     <div class="msone-actions-container">
-                        <a href="{{ route('products.edit', $product) }}" class="msone-btn-primary-edit">
+                        <a href="{{ route('products.edit', $product) }}"
+                           class="msone-btn-primary-edit">
                             Edit Product
                         </a>
 
@@ -41,6 +55,7 @@
                     </div>
                 @endif
             @endauth
+
         </div>
     </div>
 </div>

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,9 +74,25 @@ Route::middleware(['adminuser'])->group(function () {
 |--------------------------------------------------------------------------
 */
 Route::middleware(['useruser'])->group(function () {
+
     Route::get('/client', [ProductController::class, 'client'])
         ->name('client.space');
+
+    Route::get('/cart', [CartController::class, 'index'])
+        ->name('cart.index');
+
+    // ✅ FIXED HERE (GET → POST)
+    Route::post('/add-to-cart/{id}', [CartController::class, 'add'])
+        ->name('cart.add');
+
+    Route::post('/update-cart', [CartController::class, 'update'])
+        ->name('cart.update');
+
+    Route::post('/remove-from-cart', [CartController::class, 'remove'])
+        ->name('cart.remove');
 });
+
+
 
 /*
 |--------------------------------------------------------------------------

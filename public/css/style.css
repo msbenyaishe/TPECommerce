@@ -1299,3 +1299,207 @@ input::placeholder {
     padding: 6px 14px;
   }
 }
+
+
+
+/* ===============================
+   Cart Alignment & Badge Circle
+================================ */
+.msone-cart-link {
+    position: relative;
+    display: inline-flex; /* Keeps it in line with other nav links */
+    align-items: center;
+    vertical-align: middle;
+    text-decoration: none;
+    padding: 0 5px;
+    height: 100%; /* Matches height of neighbor links */
+}
+
+.cart-badge-circle {
+    /* Position the badge relative to the icon */
+
+    /* Create the Circle */
+    background-color: var(--accent-primary); /* Your brand blue */
+    color: white;
+    font-size: 10px;
+    font-weight: 800;
+    
+    width: 18px;
+    height: 18px;
+    border-radius: 50%; /* Makes it a perfect circle */
+    
+    /* Center the number inside the circle */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Clean finish */
+ /* Contrast border to separate from white background */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure the icon color matches your text-secondary */
+.msone-cart-link img {
+    opacity: 0.8;
+    transition: opacity var(--transition-fast);
+}
+
+.msone-cart-link:hover img {
+    opacity: 1;
+}
+
+/* Container and Title */
+.msone-cart-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.msone-section-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #0b132b;
+    margin-bottom: 30px;
+}
+
+/* MS1 Card Wrapper */
+.msone-card-wrapper {
+    background: #fff;
+    border-radius: 15px;
+    border: 1px solid #f1f5f9;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.msone-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.msone-table th {
+    background: #fcfdfe;
+    padding: 20px;
+    text-align: left;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #5c6776;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.msone-table td {
+    padding: 25px 20px;
+    border-bottom: 1px solid #f8fafc;
+    vertical-align: middle;
+}
+
+/* Product Info */
+.msone-product-cell {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.msone-cart-img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.msone-product-name {
+    font-weight: 700;
+    color: #1e293b;
+    font-size: var(--font-size-xl);
+}
+
+.msone-btn-remove {
+    background: none;
+    border: none;
+    color: #ff4d4d;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: var(--font-size-lg);
+}
+
+/* Total Section */
+.msone-cart-summary {
+    margin-top: 30px;
+    text-align: right;
+}
+
+.msone-total-amount {
+    font-size: var(--font-size-4xl);
+    font-weight: 800;
+    color: #0066ff;
+    margin: 10px 0;
+}
+
+.msone-btn-outline {
+    display: inline-block;
+    border: 2px solid #0066ff;
+    color: #0066ff;
+    padding: 12px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.msone-btn-blue-sm {
+    background: #0066ff;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: var(--font-size-sm);
+}
+
+.msone-qty-input {
+    width: 70px;
+    height: 30px;
+    border: 2px solid black;
+    border-radius: 8px;
+    padding: 5px;
+}
+
+.msone-price-text {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+}
+
+/* RESPONSIVE LOGIC: Mobile Phone */
+@media (max-width: 768px) {
+    .msone-table thead { display: none; }
+    
+    .msone-table tr {
+        display: block;
+        padding: 20px;
+        border-bottom: 10px solid #f8fafc;
+    }
+
+    .msone-table td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        border: none;
+    }
+
+    .msone-table td::before {
+        content: attr(data-label);
+        font-weight: 700;
+        color: #94a3b8;
+    }
+
+    .msone-product-cell { flex-direction: column; text-align: center; width: 100%; }
+
+    .msone-total-amount {
+        font-size: var(--font-size-3xl);
+        font-weight: 800;
+        color: #0066ff;
+        margin: 10px 0;
+    }
+}
