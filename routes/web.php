@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\StripeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -89,6 +90,15 @@ Route::middleware(['useruser'])->group(function () {
 
     Route::post('/remove-from-cart', [CartController::class, 'remove'])
         ->name('cart.remove');
+
+    Route::post('/checkout', [StripeController::class, 'checkout'])
+        ->name('stripe.checkout');
+
+    Route::get('/success', fn () => view('stripe.success'))
+        ->name('stripe.success');
+        
+    Route::get('/cancel', fn () => view('stripe.cancel'))
+        ->name('stripe.cancel');
 });
 
 

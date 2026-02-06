@@ -1439,11 +1439,12 @@ input::placeholder {
 .msone-btn-outline {
     display: inline-block;
     border: 2px solid #0066ff;
-    color: #0066ff;
+    color: white;
     padding: 12px 30px;
     border-radius: 8px;
     text-decoration: none;
     font-weight: 700;
+    background-color: var(--accent-primary);
 }
 
 .msone-btn-blue-sm {
@@ -1468,6 +1469,18 @@ input::placeholder {
 .msone-price-text {
   font-size: var(--font-size-lg);
   font-weight: 600;
+}
+
+.stripe-button {
+  background-color: white;
+  width: 212px;
+  height: 53px;
+  margin-bottom: 10px;
+  border: 2px solid var(--accent-primary);
+  border-radius: 8px;
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--accent-primary);
 }
 
 /* RESPONSIVE LOGIC: Mobile Phone */
