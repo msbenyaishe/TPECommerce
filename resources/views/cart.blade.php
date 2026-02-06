@@ -43,7 +43,7 @@
                                 <form action="{{ route('cart.remove') }}" method="POST">
                                     @csrf
                                     <input type="hidden" name="id" value="{{ $id }}">
-                                    <button class="msone-btn-remove">Remove</button>
+                                    <button class="msone-btn-remove" onclick="return confirm('Delete this product?')">Remove</button>
                                 </form>
                             </td>
                         </tr>
