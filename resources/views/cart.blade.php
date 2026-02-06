@@ -6,7 +6,7 @@
 
     <h1 class="page-title text-center">Cart</h1>
 
-    <div class="fade-in-up" class="msone-cart-container">
+    <div>
 
         @if(session('cart') && count(session('cart')) > 0)
 
