@@ -18,7 +18,7 @@
 
             {{-- Success message (Atelier 9) --}}
             @if(session('success'))
-                <div style="text-align:center; font-weight:700;">
+                <div style="text-align:center; font-weight:700; padding-bottom:10px;">
                     {{ session('success') }}
                 </div>
             @endif
