@@ -47,7 +47,6 @@
                         </span>
                     @endif
                 </a>
-
                 <form action="{{ route('logout') }}" method="POST" style="display:inline;">
                     @csrf
                     <button type="submit" class="msone-nav-logout">
@@ -62,8 +61,8 @@
                 <a href="/electronics">Electronics</a>
                 <a href="{{ route('login') }}">Login</a>
                 <a href="{{ route('register') }}">Register</a>
-                <a href="/contact">Contact</a>
                 <a href="/about">About</a>
+                <a href="/contact">Contact</a>
             @endauth
         </nav>
 
