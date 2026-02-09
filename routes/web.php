@@ -6,6 +6,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\StripeController;
+use Illuminate\Support\Facades\App;
 
 /*
 |--------------------------------------------------------------------------
@@ -113,6 +114,13 @@ Route::middleware(['useruser'])->group(function () {
 Route::get('/products/{product}', [ProductController::class, 'show'])
     ->middleware('auth')
     ->name('products.show');
+
+
+
+Route::get('/{lang}', function ($lang) {
+    App::setLocale($lang);
+    return view('home');
+});
 
 
 

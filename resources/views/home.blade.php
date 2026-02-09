@@ -1,22 +1,25 @@
 @extends('layout.master')
 
-@section('title', 'Home')
+@section('title', __('home.title'))
 
 @section('content')
 <section class="hero fade-in-up">
-    <h1 class="hero-title">Reliable Electronics for Everyday Use</h1>
+    <h1 class="hero-title">
+        {{ __('home.title') }}
+    </h1>
 
     <p class="hero-subtitle">
-        <span>MSONE</span> provides high-quality electronic products designed for performance,
-        durability, and modern lifestyles.
+        <span>MSONE</span>
+        {{ __('home.subtitle') }}
     </p>
 
     <div class="hero-actions">
         <a href="/electronics" class="hero-btn primary">
-            Browse Electronics
+            {{ __('home.browse') }}
         </a>
+
         <a href="/about" class="hero-btn">
-            Learn More
+            {{ __('home.learn') }}
         </a>
     </div>
 </section>

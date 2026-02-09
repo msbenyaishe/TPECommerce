@@ -64,6 +64,25 @@
                 <a href="/about">About</a>
                 <a href="/contact">Contact</a>
             @endauth
+
+
+            {{-- THE REFINED LANGUAGE SWITCHER --}}
+            @if(Request::is('/') || Request::is('ar') || Request::is('fr') || Request::is('en'))
+                <form id="localeForm" class="msone-nav-form">
+                    <select id="locale" name="lang" onchange="changeLocale()" class="msone-lang-select">
+                        <option value="ar" {{ App::getLocale() == 'ar' ? 'selected' : '' }}>AR</option>
+                        <option value="fr" {{ App::getLocale() == 'fr' ? 'selected' : '' }}>FR</option>
+                        <option value="en" {{ App::getLocale() == 'en' ? 'selected' : '' }}>EN</option>
+                    </select>
+                </form>
+
+                <script>
+                    function changeLocale() {
+                        var selectedLocale = document.getElementById("locale").value;
+                        window.location.href = '/' + selectedLocale;
+                    }
+                </script>
+            @endif
         </nav>
 
     </div>

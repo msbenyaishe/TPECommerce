@@ -1516,3 +1516,70 @@ input::placeholder {
         margin: 10px 0;
     }
 }
+
+
+
+
+/* Container for the form to live inside the nav-links flexbox */
+.msone-nav-form {
+    display: flex;
+    align-items: center; /* Forces vertical centering on the same line */
+    margin: 0; 
+    padding: 0;
+}
+
+/* Stripped Select - The "Text Link" Look */
+.msone-lang-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+    /* Match MSONE Nav Typography */
+    color: #475569; 
+    font-weight: 700;
+    font-size: 16px;
+    font-family: inherit;
+    text-transform: uppercase;
+    
+    /* Use the same padding as your other links for equal gaps */
+    padding: 0 15px; 
+    
+    transition: color 0.3s ease;
+    display: block;
+    line-height: normal; /* Fixes "sitting too high" issues */
+}
+
+/* Hover Effect */
+.msone-lang-select:hover {
+    color: #0066ff;
+}
+
+/* Mobile Adjustment */
+@media (max-width: 768px) {
+    .msone-nav-form {
+        justify-content: center; /* Centers it in the mobile menu stack */
+        width: 100%;
+    }
+    
+    .msone-lang-select {
+        padding: 10px 0; /* Vertical spacing for mobile touch */
+        font-size: 15px;
+    }
+
+    .msone-lang-select {
+        font-size: 15px; /* Better for touch */
+        width: auto;
+        padding: 5px 10px;
+    }
+
+    .msone-lang-select option {
+        background-color: #ffffff;
+        color: #475569;
+        font-weight: 700;
+    }
+}
+
