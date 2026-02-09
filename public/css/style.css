@@ -1420,7 +1420,7 @@ input::placeholder {
     color: #ff4d4d;
     font-weight: 700;
     cursor: pointer;
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-md);
 }
 
 /* Total Section */
