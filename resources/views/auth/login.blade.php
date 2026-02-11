@@ -60,6 +60,9 @@
         <button type="submit" class="btn-msone-modern hero-btn primary">{{ __('Login') }}</button>
 
         @if (Route::has('password.request'))
+            <a href="{{ route('register') }}" class="msone-link-secondary">
+                Don't have an account?
+            </a>
             <a href="{{ route('password.request') }}" class="msone-link-secondary">
                 {{ __('Forgot Your Password?') }}
             </a>
